@@ -1,0 +1,28 @@
+---
+layout: page
+# Sidebar section: intro text (the tab's content) + list of the posts in the
+# category set by `category` in the tab's front matter.
+---
+
+{% include lang.html %}
+
+{{ content }}
+
+{% assign _posts = site.categories[page.category] %}
+
+<div id="page-category">
+  {% if _posts and _posts.size > 0 %}
+    <p class="text-muted mb-2">{{ _posts | size }} post{% if _posts.size > 1 %}s{% endif %}</p>
+    <ul class="content ps-0">
+      {% for post in _posts %}
+        <li class="d-flex justify-content-between px-md-3">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <span class="dash flex-grow-1"></span>
+          {% include datetime.html date=post.date class='text-muted small text-nowrap' lang=lang %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="text-muted">No posts yet.</p>
+  {% endif %}
+</div>

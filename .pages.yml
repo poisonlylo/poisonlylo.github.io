@@ -1,0 +1,80 @@
+# Configuration de Pages CMS (https://app.pagescms.org)
+# Interface web pour écrire les articles sans toucher au code.
+# Chaque "Save" crée un commit sur main -> GitHub Actions redéploie le site.
+
+media:
+  input: assets/img/posts
+  output: /assets/img/posts
+  categories: [image]
+
+content:
+  - name: posts
+    label: Posts
+    type: collection
+    path: _posts
+    format: yaml-frontmatter
+    exclude: [".placeholder"]
+    filename:
+      template: "{year}-{month}-{day}-{primary}.md"
+      field: create
+    view:
+      primary: title
+      fields: [title, date, categories]
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+
+      - name: date
+        label: Publication date
+        description: Une date dans le futur ne sera pas publiée avant ce jour-là.
+        type: date
+        required: true
+        options:
+          time: true
+          format: "yyyy-MM-dd HH:mm:ss xx"
+
+      # Toujours une liste YAML : Jekyll découperait une chaîne simple sur les espaces.
+      - name: categories
+        label: Section
+        type: select
+        required: true
+        options:
+          multiple: true
+          min: 1
+          max: 1
+          values:
+            - Infra & Architecture
+            - Detection Engineering & SOC
+            - Writeups
+            - Articles
+
+      - name: tags
+        label: Tags
+        description: En minuscules, ex. spl, mitre-attack, t1059
+        type: string
+        list: true
+
+      - name: description
+        label: Summary
+        description: Une phrase affichée sur la page d'accueil et dans les aperçus de partage.
+        type: text
+
+      - name: image
+        label: Preview image
+        description: Optionnel. Affichée en tête d'article et sur la page d'accueil.
+        type: image
+
+      - name: pin
+        label: Pin on home page
+        type: boolean
+        default: false
+
+      - name: body
+        label: Content
+        type: rich-text

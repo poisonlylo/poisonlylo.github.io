@@ -1,0 +1,8 @@
+# Extends Chirpy's "en" locale (deep-merged with the theme's file).
+# Chirpy reads tab <title>s from here, keyed by the tab's `title` in lowercase.
+# If you rename a section tab in _tabs/, update this list too.
+tabs:
+  "infra & archi": Infra & Archi
+  "detection & soc": Detection & SOC
+  "writeups": Writeups
+  "articles": Articles

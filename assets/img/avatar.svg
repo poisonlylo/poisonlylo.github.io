@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112 112" width="112" height="112">
+  <!-- [À PERSONNALISER] Avatar provisoire : remplacez par votre photo et mettez à jour `avatar` dans _config.yml -->
+  <rect width="112" height="112" fill="#1b1f2a"/>
+  <path d="M56 20 L84 31 V55 C84 73 72 86 56 92 C40 86 28 73 28 55 V31 Z" fill="none" stroke="#4fc3f7" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M43 56 L52 65 L70 46" fill="none" stroke="#4fc3f7" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

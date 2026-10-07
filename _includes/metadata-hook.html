@@ -1,0 +1,23 @@
+<!--
+  Mode sombre par défaut, bouton de bascule conservé.
+  Exécuté après `theme.min.js` : si le visiteur n'a encore jamais choisi de thème,
+  on applique et mémorise "dark". Le marqueur évite d'écraser ensuite un choix
+  "Système" fait volontairement via le bouton.
+-->
+<script>
+  (function () {
+    try {
+      var marker = 'theme-default-applied';
+      if (localStorage.getItem(marker) === null) {
+        localStorage.setItem(marker, '1');
+        if (localStorage.getItem('theme') === null) {
+          localStorage.setItem('theme', 'dark');
+          document.documentElement.dataset.bsTheme = 'dark';
+          document.documentElement.toggleAttribute('data-theme-persisted', true);
+        }
+      }
+    } catch (e) {
+      /* localStorage indisponible : on garde le thème système */
+    }
+  })();
+</script>
